@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,27 +28,29 @@ color:white;
 overflow-x:hidden;
 }
 
-/* NEW CURSOR */
+/* CURSOR */
 
 .cursor{
-width:18px;
-height:18px;
+width:14px;
+height:14px;
+border-radius:50%;
 background:#22c55e;
-transform:rotate(45deg);
 position:fixed;
 pointer-events:none;
+transform:translate(-50%,-50%);
 z-index:9999;
-box-shadow:0 0 15px #22c55e,0 0 40px #22c55e;
+box-shadow:0 0 12px #22c55e;
 }
 
-.cursor-trail{
-width:8px;
-height:8px;
-background:#4ade80;
+.cursor-ring{
+width:35px;
+height:35px;
+border:2px solid #22c55e;
 border-radius:50%;
 position:fixed;
 pointer-events:none;
-opacity:0.6;
+transform:translate(-50%,-50%);
+transition:0.15s ease;
 z-index:9998;
 }
 
@@ -57,8 +60,8 @@ header{
 position:fixed;
 width:100%;
 top:0;
-background:rgba(2,6,23,0.7);
-backdrop-filter:blur(12px);
+background:rgba(2,6,23,0.8);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
@@ -73,7 +76,6 @@ padding:20px 8%;
 font-size:22px;
 font-weight:700;
 color:#22c55e;
-letter-spacing:1px;
 }
 
 nav ul{
@@ -132,53 +134,31 @@ width:4px;
 height:4px;
 background:#22c55e;
 border-radius:50%;
-opacity:0.5;
+opacity:0.4;
 animation:float 12s infinite linear;
 }
 
 @keyframes float{
-
-0%{
-transform:translateY(100vh) scale(0.5);
-}
-
-100%{
-transform:translateY(-10vh) scale(1.2);
-}
-
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
 }
 
 /* HERO TEXT */
 
 .hero h1{
-font-size:60px;
-
-background:linear-gradient(90deg,#22c55e,#4ade80,#86efac);
-background-size:300%;
--webkit-background-clip:text;
-color:transparent;
-
-animation:gradientMove 6s infinite linear;
-}
-
-@keyframes gradientMove{
-
-0%{background-position:0%;}
-100%{background-position:200%;}
-
+font-size:55px;
+color:#4ade80;
+margin-bottom:10px;
 }
 
 .hero p{
-margin-top:20px;
 font-size:18px;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
+max-width:650px;
+margin:auto;
 opacity:0.9;
 }
 
 .hero button{
-
 margin-top:30px;
 padding:14px 28px;
 border:none;
@@ -187,40 +167,11 @@ background:#22c55e;
 color:#02140a;
 font-weight:600;
 transition:0.3s;
-position:relative;
-overflow:hidden;
-
 }
 
 .hero button:hover{
-
 transform:translateY(-4px);
-box-shadow:0 10px 30px rgba(34,197,94,0.5);
-
-}
-
-/* BUTTON RIPPLE */
-
-.hero button::after{
-
-content:"";
-position:absolute;
-width:0;
-height:0;
-background:rgba(255,255,255,0.4);
-border-radius:50%;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-transition:0.5s;
-
-}
-
-.hero button:hover::after{
-
-width:200%;
-height:200%;
-
+box-shadow:0 10px 25px rgba(34,197,94,0.5);
 }
 
 /* SECTIONS */
@@ -251,38 +202,13 @@ backdrop-filter:blur(10px);
 padding:30px;
 border-radius:14px;
 border:1px solid rgba(255,255,255,0.08);
-transition:0.4s;
-position:relative;
-overflow:hidden;
+transition:0.35s;
 }
 
 .card:hover{
-
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 25px 45px rgba(0,0,0,0.6);
-
-}
-
-/* CARD GLOW */
-
-.card::before{
-
-content:"";
-position:absolute;
-width:200%;
-height:200%;
-background:radial-gradient(circle,#22c55e33,transparent);
-top:-50%;
-left:-50%;
-opacity:0;
-transition:0.5s;
-
-}
-
-.card:hover::before{
-
-opacity:1;
-
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+border-color:#22c55e;
 }
 
 /* SKILLS */
@@ -296,11 +222,9 @@ transition:0.3s;
 }
 
 .skill:hover{
-
 background:#22c55e;
 color:#02140a;
-transform:scale(1.08);
-
+transform:scale(1.05);
 }
 
 /* FOOTER */
@@ -315,7 +239,7 @@ opacity:0.6;
 
 .hidden{
 opacity:0;
-transform:translateY(60px);
+transform:translateY(40px);
 transition:all 1s;
 }
 
@@ -331,6 +255,7 @@ transform:translateY(0);
 <body>
 
 <div class="cursor"></div>
+<div class="cursor-ring"></div>
 
 <header>
 
@@ -354,7 +279,7 @@ transform:translateY(0);
 
 <div>
 
-<h1>Data Scientist & Analyst</h1>
+<h1 id="typing"></h1>
 
 <p>
 Research-driven Data Scientist specializing in AI, Machine Learning,
@@ -372,13 +297,10 @@ Data Analytics and Business Intelligence based in Perth.
 <h2 class="section-title">About Me</h2>
 
 <div class="card">
-
 <p>
-Data specialist with expertise in Machine Learning, NLP, data analytics and
-research-driven insights. Passionate about transforming complex datasets into
-actionable business intelligence while teaching AI and data science concepts.
+Data specialist with expertise in Machine Learning, NLP and data analytics,
+focused on transforming complex data into meaningful insights.
 </p>
-
 </div>
 
 </section>
@@ -409,31 +331,6 @@ actionable business intelligence while teaching AI and data science concepts.
 
 </section>
 
-<section id="experience" class="hidden">
-
-<h2 class="section-title">Experience</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Associate Data Analyst</h3>
-<p>SoftoSol</p>
-</div>
-
-<div class="card">
-<h3>Business Development Manager</h3>
-<p>SoftoSol</p>
-</div>
-
-<div class="card">
-<h3>Training & Operations Manager</h3>
-<p>Ecommerce Success Pakistan</p>
-</div>
-
-</div>
-
-</section>
-
 <section id="skills" class="hidden">
 
 <h2 class="section-title">Skills</h2>
@@ -446,22 +343,6 @@ actionable business intelligence while teaching AI and data science concepts.
 <div class="skill">Tableau</div>
 <div class="skill">Machine Learning</div>
 <div class="skill">NLP</div>
-<div class="skill">Advanced Excel</div>
-<div class="skill">Data Visualization</div>
-
-</div>
-
-</section>
-
-<section id="contact" class="hidden">
-
-<h2 class="section-title">Contact</h2>
-
-<div class="card">
-
-<p>Email: fahadrasheed677@gmail.com</p>
-<p>Phone: +61-431628433</p>
-<p>Perth, Australia</p>
 
 </div>
 
@@ -476,29 +357,51 @@ actionable business intelligence while teaching AI and data science concepts.
 /* CURSOR */
 
 const cursor=document.querySelector(".cursor")
+const ring=document.querySelector(".cursor-ring")
 
 document.addEventListener("mousemove",e=>{
-
 cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
 
+ring.style.left=e.clientX+"px"
+ring.style.top=e.clientY+"px"
+})
+
+document.querySelectorAll("a,button").forEach(el=>{
+el.addEventListener("mouseenter",()=>{
+ring.style.transform="translate(-50%,-50%) scale(1.6)"
+})
+el.addEventListener("mouseleave",()=>{
+ring.style.transform="translate(-50%,-50%) scale(1)"
+})
 })
 
 /* PARTICLES */
 
 for(let i=0;i<40;i++){
-
 let p=document.createElement("div")
 p.className="particle"
-
 p.style.left=Math.random()*100+"%"
 p.style.animationDuration=8+Math.random()*10+"s"
-
 document.body.appendChild(p)
-
 }
 
-/* SCROLL ANIMATION */
+/* TYPING ANIMATION */
+
+const text="Data Scientist & Analyst"
+let i=0
+
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i)
+i++
+setTimeout(typing,80)
+}
+}
+
+typing()
+
+/* SCROLL REVEAL */
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -516,3 +419,4 @@ observer.observe(el)
 
 </body>
 </html>
+```
