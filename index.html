@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,26 +21,35 @@ cursor:none;
 
 body{
 font-family:'Poppins',sans-serif;
-color:white;
 background:#020617;
+color:white;
 overflow-x:hidden;
 }
 
-/* Perth background */
+/* CURSOR */
 
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 10%;
-background:
-linear-gradient(rgba(2,20,10,0.85), rgba(2,6,23,0.95)),
-url("https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=2070&auto=format&fit=crop");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+.cursor{
+width:10px;
+height:10px;
+background:#22c55e;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:9999;
+}
+
+.cursor2{
+width:35px;
+height:35px;
+border:2px solid #22c55e;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:0.1s;
+opacity:0.6;
+z-index:9998;
 }
 
 /* NAVBAR */
@@ -49,7 +59,7 @@ position:fixed;
 width:100%;
 top:0;
 backdrop-filter:blur(10px);
-background:rgba(2,6,23,0.6);
+background:rgba(2,6,23,0.7);
 z-index:1000;
 }
 
@@ -94,7 +104,24 @@ nav a:hover::after{
 width:100%;
 }
 
-/* HERO TEXT */
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 10%;
+
+background:
+linear-gradient(rgba(2,20,10,0.85), rgba(2,6,23,0.95)),
+url("https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=2070&auto=format&fit=crop");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
 
 .hero h1{
 font-size:55px;
@@ -106,34 +133,34 @@ color:transparent;
 .hero p{
 margin-top:20px;
 font-size:18px;
-opacity:0.9;
 max-width:700px;
 margin-left:auto;
 margin-right:auto;
+opacity:0.9;
 }
 
 .hero button{
-margin-top:35px;
+margin-top:30px;
 padding:14px 28px;
 border:none;
 border-radius:8px;
 background:#22c55e;
 color:#02140a;
 font-weight:600;
-cursor:pointer;
 transition:0.3s;
+cursor:pointer;
 }
 
 .hero button:hover{
 transform:translateY(-4px);
 box-shadow:0 10px 30px rgba(34,197,94,0.5);
+background:#16a34a;
 }
 
 /* SECTIONS */
 
 section{
 padding:120px 10%;
-background:#020617;
 }
 
 .section-title{
@@ -142,7 +169,7 @@ margin-bottom:40px;
 color:#4ade80;
 }
 
-/* GLASS CARDS */
+/* CARDS */
 
 .card{
 background:rgba(255,255,255,0.05);
@@ -200,44 +227,32 @@ footer{
 text-align:center;
 padding:40px;
 opacity:0.6;
-background:#020617;
 }
 
-/* CUSTOM CURSOR */
+/* SCROLL ANIMATION */
 
-.cursor{
-width:12px;
-height:12px;
-border-radius:50%;
-background:#22c55e;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-z-index:9999;
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s;
 }
 
-.cursor-follower{
-width:35px;
-height:35px;
-border:2px solid #22c55e;
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-transition:0.1s;
-opacity:0.5;
-z-index:9998;
+.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="cursor"></div>
-<div class="cursor-follower"></div>
+<div class="cursor2"></div>
 
 <header>
+
 <nav>
 
 <div class="logo">Fahad Rasheed</div>
@@ -251,6 +266,7 @@ z-index:9998;
 </ul>
 
 </nav>
+
 </header>
 
 
@@ -261,7 +277,7 @@ z-index:9998;
 <h1>Data Scientist & Analyst</h1>
 
 <p>
-Research driven Data Scientist with expertise in AI, Machine Learning,
+Research-driven Data Scientist specializing in AI, Machine Learning,
 Data Analytics and Business Intelligence based in Perth.
 </p>
 
@@ -272,16 +288,16 @@ Data Analytics and Business Intelligence based in Perth.
 </section>
 
 
-<section id="about">
+<section id="about" class="hidden">
 
 <h2 class="section-title">About Me</h2>
 
 <div class="card">
 
 <p>
-Data specialist with a Master's in Data Science and strong expertise
-in AI, Machine Learning, NLP, and data visualization.
-Currently pursuing a PhD while researching data-driven solutions.
+Data specialist with a Master's in Data Science and Bachelor's in
+Computer Science. Experienced in Machine Learning, NLP, and
+data-driven research while teaching AI and analytics concepts.
 </p>
 
 </div>
@@ -289,7 +305,64 @@ Currently pursuing a PhD while researching data-driven solutions.
 </section>
 
 
-<section id="skills">
+<section id="education" class="hidden">
+
+<h2 class="section-title">Education</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>PhD – Curtin University</h3>
+<p>Perth, Australia</p>
+<p>2025 – Present</p>
+</div>
+
+<div class="card">
+<h3>Masters in Data Science</h3>
+<p>CGPA 3.67</p>
+<p>Machine Learning, NLP, Big Data Analytics</p>
+</div>
+
+<div class="card">
+<h3>Bachelor in Computer Science</h3>
+<p>CGPA 3.69</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="experience" class="hidden">
+
+<h2 class="section-title">Experience</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Associate Data Analyst</h3>
+<p>SoftoSol</p>
+<p>Predictive analytics and data-driven business insights.</p>
+</div>
+
+<div class="card">
+<h3>Business Development Manager</h3>
+<p>SoftoSol</p>
+<p>Client acquisition and strategic pricing optimization.</p>
+</div>
+
+<div class="card">
+<h3>Training & Operations Manager</h3>
+<p>Ecommerce Success Pakistan</p>
+<p>Led ecommerce education for a 200k+ member community.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="skills" class="hidden">
 
 <h2 class="section-title">Skills</h2>
 
@@ -300,7 +373,7 @@ Currently pursuing a PhD while researching data-driven solutions.
 <div class="skill">Power BI</div>
 <div class="skill">Tableau</div>
 <div class="skill">Machine Learning</div>
-<div class="skill">Natural Language Processing</div>
+<div class="skill">NLP</div>
 <div class="skill">Advanced Excel</div>
 <div class="skill">Data Visualization</div>
 
@@ -309,7 +382,7 @@ Currently pursuing a PhD while researching data-driven solutions.
 </section>
 
 
-<section id="contact">
+<section id="contact" class="hidden">
 
 <h2 class="section-title">Contact</h2>
 
@@ -317,6 +390,7 @@ Currently pursuing a PhD while researching data-driven solutions.
 
 <p>Email: fahadrasheed677@gmail.com</p>
 <p>Phone: +61-431628433</p>
+<p>LinkedIn: linkedin.com/in/fahadrasheed677</p>
 <p>Perth, Australia</p>
 
 </div>
@@ -331,19 +405,31 @@ Currently pursuing a PhD while researching data-driven solutions.
 
 <script>
 
-/* CUSTOM CURSOR */
+/* CURSOR */
 
-const cursor = document.querySelector(".cursor")
-const follower = document.querySelector(".cursor-follower")
+const cursor=document.querySelector(".cursor")
+const cursor2=document.querySelector(".cursor2")
 
-document.addEventListener("mousemove", e => {
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
 
-cursor.style.left = e.clientX + "px"
-cursor.style.top = e.clientY + "px"
+cursor2.style.left=e.clientX+"px"
+cursor2.style.top=e.clientY+"px"
+})
 
-follower.style.left = e.clientX + "px"
-follower.style.top = e.clientY + "px"
+/* SCROLL REVEAL */
 
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el)
 })
 
 </script>
