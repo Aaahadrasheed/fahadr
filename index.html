@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fahad Rasheed | Data Scientist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(120deg,#0f172a,#020617);
+color:white;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+width:100%;
+top:0;
+backdrop-filter:blur(10px);
+background:rgba(2,6,23,0.6);
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+}
+
+.logo{
+font-weight:700;
+font-size:22px;
+color:#38bdf8;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:14px;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+width:0%;
+height:2px;
+background:#38bdf8;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 10%;
+}
+
+.hero h1{
+font-size:55px;
+background:linear-gradient(90deg,#38bdf8,#60a5fa);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+margin-top:20px;
+font-size:18px;
+opacity:0.8;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.hero button{
+margin-top:35px;
+padding:14px 28px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+color:#020617;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 30px rgba(56,189,248,0.4);
+}
+
+/* SECTIONS */
+
+section{
+padding:120px 10%;
+}
+
+.section-title{
+font-size:32px;
+margin-bottom:40px;
+color:#38bdf8;
+}
+
+/* GLASS CARD */
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+/* SKILLS */
+
+.skill{
+padding:15px;
+background:rgba(56,189,248,0.1);
+border-radius:8px;
+text-align:center;
+transition:0.3s;
+}
+
+.skill:hover{
+background:#38bdf8;
+color:#020617;
+transform:scale(1.05);
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact a{
+color:#38bdf8;
+text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+opacity:0.6;
+}
+
+/* SCROLL ANIMATION */
+
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">Fahad Rasheed</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+
+<section class="hero">
+<div>
+<h1>Data Scientist & Analyst</h1>
+<p>
+Research driven Data Scientist with expertise in AI, Machine Learning,
+Data Analytics and Business Intelligence.
+Currently pursuing a PhD while helping organizations transform data into insights.
+</p>
+
+<button onclick="location.href='#contact'">Contact Me</button>
+</div>
+</section>
+
+
+<section id="about" class="hidden">
+<h2 class="section-title">About Me</h2>
+
+<div class="card">
+<p>
+I am a data specialist with a Master's in Data Science and a Bachelor's
+in Computer Science. My work focuses on Machine Learning, NLP,
+data visualization and research analytics.
+I also teach AI, Data Science and business intelligence concepts,
+helping students apply analytics in real-world scenarios.
+</p>
+</div>
+
+</section>
+
+
+<section id="education" class="hidden">
+<h2 class="section-title">Education</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>PhD – Curtin University</h3>
+<p>Perth, Australia</p>
+<p>2025 – Present</p>
+</div>
+
+<div class="card">
+<h3>Masters in Data Science</h3>
+<p>CGPA 3.67</p>
+<p>Machine Learning, NLP, Big Data</p>
+</div>
+
+<div class="card">
+<h3>Bachelor in Computer Science</h3>
+<p>CGPA 3.69</p>
+<p>AI, Algorithms, Databases</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="experience" class="hidden">
+<h2 class="section-title">Experience</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Associate Data Analyst</h3>
+<p>SoftoSol</p>
+<p>Predictive analytics, market research and data driven process improvements.</p>
+</div>
+
+<div class="card">
+<h3>Business Development Manager</h3>
+<p>SoftoSol</p>
+<p>Client acquisition strategies and pricing optimization.</p>
+</div>
+
+<div class="card">
+<h3>Training & Operations Manager</h3>
+<p>Ecommerce Success Pakistan</p>
+<p>Led ecommerce training programs for 200k+ community members.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="skills" class="hidden">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="grid">
+
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">Power BI</div>
+<div class="skill">Tableau</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">NLP</div>
+<div class="skill">Advanced Excel</div>
+<div class="skill">Data Visualization</div>
+
+</div>
+
+</section>
+
+
+<section id="contact" class="hidden">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="card contact">
+<p>Email: <a href="mailto:fahadrasheed677@gmail.com">fahadrasheed677@gmail.com</a></p>
+<p>Phone: +61-431628433</p>
+<p>LinkedIn: linkedin.com/in/fahadrasheed677</p>
+<p>Perth, Australia</p>
+</div>
+
+</section>
+
+
+<footer>
+© 2025 Fahad Rasheed
+</footer>
+
+
+<script>
+
+/* SCROLL REVEAL ANIMATION */
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el)
+})
+
+</script>
+
+</body>
+</html>
