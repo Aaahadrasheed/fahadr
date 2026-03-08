@@ -27,29 +27,27 @@ color:white;
 overflow-x:hidden;
 }
 
-/* CUSTOM CURSOR */
+/* NEW CURSOR */
 
 .cursor{
-width:12px;
-height:12px;
+width:18px;
+height:18px;
 background:#22c55e;
-border-radius:50%;
+transform:rotate(45deg);
 position:fixed;
 pointer-events:none;
-transform:translate(-50%,-50%);
 z-index:9999;
-box-shadow:0 0 15px #22c55e;
+box-shadow:0 0 15px #22c55e,0 0 40px #22c55e;
 }
 
-.cursor2{
-width:40px;
-height:40px;
-border:2px solid rgba(34,197,94,0.6);
+.cursor-trail{
+width:8px;
+height:8px;
+background:#4ade80;
 border-radius:50%;
 position:fixed;
 pointer-events:none;
-transform:translate(-50%,-50%);
-transition:0.12s;
+opacity:0.6;
 z-index:9998;
 }
 
@@ -59,8 +57,8 @@ header{
 position:fixed;
 width:100%;
 top:0;
-background:rgba(2,6,23,0.8);
-backdrop-filter:blur(10px);
+background:rgba(2,6,23,0.7);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
 
@@ -75,6 +73,7 @@ padding:20px 8%;
 font-size:22px;
 font-weight:700;
 color:#22c55e;
+letter-spacing:1px;
 }
 
 nav ul{
@@ -105,7 +104,7 @@ nav a:hover::after{
 width:100%;
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
 height:100vh;
@@ -125,29 +124,48 @@ background-position:center;
 background-attachment:fixed;
 }
 
-/* MOVING GLOW */
+/* FLOATING PARTICLES */
 
-.hero::after{
-content:"";
+.particle{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 30% 40%, rgba(34,197,94,0.25), transparent 60%);
-animation:glowMove 12s infinite alternate;
+width:4px;
+height:4px;
+background:#22c55e;
+border-radius:50%;
+opacity:0.5;
+animation:float 12s infinite linear;
 }
 
-@keyframes glowMove{
-0%{transform:translateX(-50px);}
-100%{transform:translateX(50px);}
+@keyframes float{
+
+0%{
+transform:translateY(100vh) scale(0.5);
 }
+
+100%{
+transform:translateY(-10vh) scale(1.2);
+}
+
+}
+
+/* HERO TEXT */
 
 .hero h1{
-font-size:55px;
-background:linear-gradient(90deg,#22c55e,#4ade80);
+font-size:60px;
+
+background:linear-gradient(90deg,#22c55e,#4ade80,#86efac);
+background-size:300%;
 -webkit-background-clip:text;
 color:transparent;
+
+animation:gradientMove 6s infinite linear;
+}
+
+@keyframes gradientMove{
+
+0%{background-position:0%;}
+100%{background-position:200%;}
+
 }
 
 .hero p{
@@ -160,6 +178,7 @@ opacity:0.9;
 }
 
 .hero button{
+
 margin-top:30px;
 padding:14px 28px;
 border:none;
@@ -168,12 +187,40 @@ background:#22c55e;
 color:#02140a;
 font-weight:600;
 transition:0.3s;
+position:relative;
+overflow:hidden;
+
 }
 
 .hero button:hover{
+
 transform:translateY(-4px);
 box-shadow:0 10px 30px rgba(34,197,94,0.5);
-background:#16a34a;
+
+}
+
+/* BUTTON RIPPLE */
+
+.hero button::after{
+
+content:"";
+position:absolute;
+width:0;
+height:0;
+background:rgba(255,255,255,0.4);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+transition:0.5s;
+
+}
+
+.hero button:hover::after{
+
+width:200%;
+height:200%;
+
 }
 
 /* SECTIONS */
@@ -188,6 +235,14 @@ margin-bottom:40px;
 color:#4ade80;
 }
 
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
 /* CARDS */
 
 .card{
@@ -196,21 +251,38 @@ backdrop-filter:blur(10px);
 padding:30px;
 border-radius:14px;
 border:1px solid rgba(255,255,255,0.08);
-transition:0.35s;
+transition:0.4s;
+position:relative;
+overflow:hidden;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-border-color:#22c55e;
+
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 25px 45px rgba(0,0,0,0.6);
+
 }
 
-/* GRID */
+/* CARD GLOW */
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+.card::before{
+
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(circle,#22c55e33,transparent);
+top:-50%;
+left:-50%;
+opacity:0;
+transition:0.5s;
+
+}
+
+.card:hover::before{
+
+opacity:1;
+
 }
 
 /* SKILLS */
@@ -224,15 +296,11 @@ transition:0.3s;
 }
 
 .skill:hover{
+
 background:#22c55e;
 color:#02140a;
-transform:scale(1.05);
-}
+transform:scale(1.08);
 
-/* CONTACT */
-
-.contact{
-text-align:center;
 }
 
 /* FOOTER */
@@ -247,7 +315,7 @@ opacity:0.6;
 
 .hidden{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(60px);
 transition:all 1s;
 }
 
@@ -263,7 +331,6 @@ transform:translateY(0);
 <body>
 
 <div class="cursor"></div>
-<div class="cursor2"></div>
 
 <header>
 
@@ -283,7 +350,6 @@ transform:translateY(0);
 
 </header>
 
-
 <section class="hero">
 
 <div>
@@ -301,7 +367,6 @@ Data Analytics and Business Intelligence based in Perth.
 
 </section>
 
-
 <section id="about" class="hidden">
 
 <h2 class="section-title">About Me</h2>
@@ -309,15 +374,14 @@ Data Analytics and Business Intelligence based in Perth.
 <div class="card">
 
 <p>
-Data specialist with a Master's in Data Science and Bachelor's in Computer Science.
-Experienced in Machine Learning, NLP, and data-driven research while teaching
-AI and analytics concepts.
+Data specialist with expertise in Machine Learning, NLP, data analytics and
+research-driven insights. Passionate about transforming complex datasets into
+actionable business intelligence while teaching AI and data science concepts.
 </p>
 
 </div>
 
 </section>
-
 
 <section id="education" class="hidden">
 
@@ -345,7 +409,6 @@ AI and analytics concepts.
 
 </section>
 
-
 <section id="experience" class="hidden">
 
 <h2 class="section-title">Experience</h2>
@@ -371,7 +434,6 @@ AI and analytics concepts.
 
 </section>
 
-
 <section id="skills" class="hidden">
 
 <h2 class="section-title">Skills</h2>
@@ -391,12 +453,11 @@ AI and analytics concepts.
 
 </section>
 
-
 <section id="contact" class="hidden">
 
 <h2 class="section-title">Contact</h2>
 
-<div class="card contact">
+<div class="card">
 
 <p>Email: fahadrasheed677@gmail.com</p>
 <p>Phone: +61-431628433</p>
@@ -406,48 +467,38 @@ AI and analytics concepts.
 
 </section>
 
-
 <footer>
 © 2026 Fahad Rasheed
 </footer>
-
 
 <script>
 
 /* CURSOR */
 
 const cursor=document.querySelector(".cursor")
-const cursor2=document.querySelector(".cursor2")
 
 document.addEventListener("mousemove",e=>{
 
 cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
 
-cursor2.style.left=e.clientX+"px"
-cursor2.style.top=e.clientY+"px"
-
 })
 
-/* CURSOR HOVER EFFECT */
+/* PARTICLES */
 
-document.querySelectorAll("a,button").forEach(el=>{
+for(let i=0;i<40;i++){
 
-el.addEventListener("mouseenter",()=>{
+let p=document.createElement("div")
+p.className="particle"
 
-cursor2.style.transform="translate(-50%,-50%) scale(1.6)"
+p.style.left=Math.random()*100+"%"
+p.style.animationDuration=8+Math.random()*10+"s"
 
-})
+document.body.appendChild(p)
 
-el.addEventListener("mouseleave",()=>{
+}
 
-cursor2.style.transform="translate(-50%,-50%) scale(1)"
-
-})
-
-})
-
-/* SCROLL REVEAL */
+/* SCROLL ANIMATION */
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -464,5 +515,4 @@ observer.observe(el)
 </script>
 
 </body>
-
 </html>
