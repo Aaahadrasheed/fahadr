@@ -60,7 +60,7 @@ header{
 position:fixed;
 width:100%;
 top:0;
-background:rgba(2,6,23,0.8);
+background:rgba(2,6,23,0.85);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
@@ -266,9 +266,7 @@ transform:translateY(0);
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#education">Education</a></li>
-<li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
-<li><a href="#contact">Contact</a></li>
 </ul>
 
 </nav>
@@ -286,7 +284,7 @@ Research-driven Data Scientist specializing in AI, Machine Learning,
 Data Analytics and Business Intelligence based in Perth.
 </p>
 
-<button onclick="location.href='#contact'">Contact Me</button>
+<button onclick="location.href='#about'">Explore</button>
 
 </div>
 
@@ -362,7 +360,6 @@ const ring=document.querySelector(".cursor-ring")
 document.addEventListener("mousemove",e=>{
 cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
-
 ring.style.left=e.clientX+"px"
 ring.style.top=e.clientY+"px"
 })
